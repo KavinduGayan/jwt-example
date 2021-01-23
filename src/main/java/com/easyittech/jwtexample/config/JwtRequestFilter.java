@@ -1,6 +1,7 @@
 package com.easyittech.jwtexample.config;
 
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -70,6 +71,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
+        //System.out.println(request.getReader().lines().collect(Collectors.joining()));
+        System.out.println(request.getRequestURI());
         chain.doFilter(request, response);
     }
 
